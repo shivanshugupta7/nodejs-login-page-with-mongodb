@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+    <style>
+        body       
+          { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    
+    <!-- LOGIN FORM -->
+    <form id="form">
+        <div class="form-group">
+            <label>Email Id </label>
+            <input type="text" class="form-control" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+            
+        </div>
+        
+        <button class="btn btn-warning btn-lg" onclick="submitForm(event)" >LOGIN</button>
+
+
+
+        <a href="/register">REGISTER</a>
+    </form>
+
+    <hr>
+
+</div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    
+    function submitForm(event){
+        event.preventDefault()
+        var email = document.getElementById('email').value
+        var password = document.getElementById('password').value
+        sendDetail(email, password)
+    }
+
+    function sendDetail(email, password){
+        axios.post('/login', {email, password})
+        .then((response)=>{
+            if( response.status == 200 && response.data.emailError == "incorrectEmail"){
+                alert('user not found with this email')
+            }
+            if( response.status == 200 && response.data.passwordError == "incorrectPassword"){
+              alert("Incorrect password")
+            }
+            if( response.status == 200){
+                location.replace('home')
+            }
+            if( response.status == 500){
+                alert( 'internal error' )
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+</script>
+
+<script>
+    function myalert()
+    {
+        Swal.fire({
+            title: 'Custom animation with Animate.css',
+            animation: false,
+            
+            customClass: {
+              popup: 'animated tada'
+            
+            }
+          })
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "shivanshu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "express-validator": "^6.2.0",
+    "flash-messages": "0.0.4",
+    "js-alert": "^1.0.4",
+    "mongoose": "^5.7.1",
+    "node": "^12.11.0",
+    "sweetalert2": "^8.17.6"
+  }
+}

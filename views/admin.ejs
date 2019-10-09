@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+    <style>
+        body       
+          { background-color:black;
+              padding-top : 80px
+             
+            }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <!-- LOGIN FORM -->
+    <% if(error){ %>
+    <div>
+        <p style="color: red"><%= error %></p>
+    </div>
+    <% } %>
+    <form id="form" action="/admin" method="POST">
+        <div class="form-group">
+            <label>ADMIN EMAIL ID </label>
+            <input type="text" class="form-control" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label>ADMIN Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+        </div>
+
+        
+        <button class="btn btn-warning btn-lg">LOGIN</button>
+
+    </form>
+
+    <hr>
+
+</div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script>
+    
+    function submitForm(event){
+        event.preventDefault()
+        var email = document.getElementById('email').value
+        var password = document.getElementById('password').value
+        sendDetail(email, password)
+    }
+
+    function sendDetail(email, password){
+        axios.post('/admin', {email, password})
+        .then((response)=>{
+            if( response.status == 200 && response.data.emailError == "incorrectEmail"){
+                alert('Invalid admin')
+            }
+            if( response.status == 200 && response.data.passwordError == "incorrectPassword"){
+              alert("user unauthorized");
+            }
+            if( response.status == 200){
+                location.replace('/adminhtml');
+            }
+            if( response.status == 500){
+                alert( 'internal error' )
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+</script> -->
+
+</body>
+
+</html>
