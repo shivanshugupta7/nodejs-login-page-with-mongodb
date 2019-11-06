@@ -16,7 +16,7 @@
     "express-validator": "^6.2.0",
     "flash-messages": "0.0.4",
     "js-alert": "^1.0.4",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "node": "^12.11.0",
     "sweetalert2": "^8.17.6"
   }
